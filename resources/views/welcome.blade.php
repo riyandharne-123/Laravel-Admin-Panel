@@ -19,80 +19,59 @@
                 height: 100vh;
                 margin: 0;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
+        
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+             <!-- Brand -->
+  <a class="navbar-brand" href="#"><h3>Laravel Admin Panel</h3></a>
 
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+   
+                    @if (Route::has('login'))
+    
+                    @auth
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/home') }}"><h5><i class="fa fa-home" aria-hidden="true"></i> Home</h5></a>
+                        </li>
+                    @else
+                       <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}"><h5><i class="fa fa-sign-in" aria-hidden="true"></i> Login</h5></a>
+                        </li>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                           <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}"><h5><i class="fa fa-user-plus" aria-hidden="true"></i> Register</h5></a>
+                            </li>
                         @endif
                     @endauth
-                </div>
+             
             @endif
+    </ul>
+  </div>
+        </nav>
 
-            <div class="content">
+
+            <div class="content" style="padding-top:8%;">
                 <div class="title m-b-md">
-                 Dharne Tech Solutions
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                 <div class="jumbotron jumbotron-fluid" style="height:50vh; padding-top:10%;">
+            <div class="container" style="text-align:center;">
+               <h1>Welcome To Laravel Admin Panel</h1>
+            </div>
+            </div>
                 </div>
             </div>
         </div>
