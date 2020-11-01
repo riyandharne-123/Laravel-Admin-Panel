@@ -11,7 +11,7 @@
                 <div class="card-body">
     <button class="btn btn-primary"
 data-toggle="modal" data-target="#AddTodoModal"
-    >Add Todo</button>
+    ><i class="fa fa-plus-square" aria-hidden="true"></i> Add Todo</button>
     <hr>
     <div class="table-responsive">
     <table id="todo-table" class="table table-bordered table-hover">
@@ -30,11 +30,11 @@ data-toggle="modal" data-target="#AddTodoModal"
         <td>
           @if($todo->completed == "1")
         <strong class="text-success">
-        Complete
+     <i class="fa fa-check" aria-hidden="true"></i>
           </strong>
           @else
             <strong class="text-danger">
-        Incomplete
+      <i class="fa fa-times" aria-hidden="true"></i>
           </strong>
           @endif
         </td>
@@ -44,13 +44,13 @@ data-toggle="modal" data-target="#AddTodoModal"
           <td>
             <button class="btn btn-success"
 data-toggle="modal" data-target="#Modal{{$todo->id}}"
-            >View</button>
+            ><i class="fa fa-eye" aria-hidden="true"></i> View</button>
             <button class="btn btn-primary"
 data-toggle="modal" data-target="#EditModal{{$todo->id}}"
-            >Edit</button>
+            ><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
             <button class="btn btn-danger"
      onclick="$('#delete_form').submit();">
-            Delete</button>
+          <i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
           </td>
       </tr>
       <!-- The Modal -->
@@ -77,17 +77,17 @@ data-toggle="modal" data-target="#EditModal{{$todo->id}}"
        <label for="todo">Status:</label>
        @if($todo->completed == "1")
         <strong class="text-success">
-        Complete
+       <i class="fa fa-check" aria-hidden="true"></i>
           </strong>
           @else
             <strong class="text-danger">
-        Incomplete
+       <i class="fa fa-times" aria-hidden="true"></i>
           </strong>
           @endif
       </h4>
       </div>
 <div class="modal-footer">
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
 </div>
     </div>
   </div>
@@ -149,8 +149,8 @@ data-toggle="modal" data-target="#EditModal{{$todo->id}}"
         <hr>
         <button class="btn btn-primary" 
 type="submit" 
-        >Edit Todo</button>
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        ><i class="fa fa-check" aria-hidden="true"></i> Edit Todo</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
       </form>
       </div>
     </div>
@@ -176,10 +176,10 @@ type="submit"
         <div class="row">
           <div class="col-md-4" style="margin: 0 auto;">
             <input type="hidden" name="todo_id" value="{{$todo->id}}">
-            <button type="submit" class="btn btn-success btn-lg">YES</button>
+            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-check" aria-hidden="true"></i> YES</button>
           </div>
             <div class="col-md-4" style="margin: 0 auto;">
-          <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
           </div>
 
         </div>
@@ -225,8 +225,8 @@ type="submit"
         <hr>
         <button class="btn btn-primary" 
 type="submit" 
-        >Add Todo</button>
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        ><i class="fa fa-check" aria-hidden="true"></i> Add Todo</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
       </form>
       </div>
 

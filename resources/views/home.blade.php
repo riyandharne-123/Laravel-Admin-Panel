@@ -13,7 +13,7 @@
                     <label>Profile Image:</label>
                     @if(Auth::user()->avatar)
                       <img class="img-fluid" src="{{
-                                    asset('/storage/images/'.Auth::user()->avatar)
+                                    asset('storage/images/'.Auth::user()->avatar)
                                 }}" alt="avatar" />
                     
                     @else
@@ -29,7 +29,7 @@
   <input type="file" name="image" />
   <br>
   <br>
-  <input type="submit" name="Upload" value="upload image" class="btn btn-primary"/>
+  <button type="submit" name="Upload" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
 </form>
 </div>
                 </div>

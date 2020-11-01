@@ -23,7 +23,7 @@ class AdminController extends Controller
             //creating user charts
             $chart = new UserChart;
             $chart->labels(User::pluck('created_at')->values());
-            $chart->dataset('Total Users' ,'line',User::pluck('created_at')->keys());
+            $chart->dataset('Total Users' ,'bar',User::pluck('created_at')->keys());
 
         return view('admin.index')->with([
             'users' => $data,'total_users' => $total_users,

@@ -9,24 +9,24 @@
                 <div class="card-header"><h4>All Users</h4></div>
      <div class="card-body">
 <div class="row">
-  <div class="col-md-3" style="margin: 0 auto;">
+  <div class="col-md-4" style="margin: 0 auto;">
     <div class="card">
       <div class="card-body text-white bg-success" style="text-align: center;">
-        <h2>Total Users: {{$total_users}}</h2>
+        <h2><i class="fa fa-users" aria-hidden="true"></i> Total Users: {{$total_users}}</h2>
       </div>
     </div>
   </div>
     <div class="col-md-4" style="margin: 0 auto;">
     <div class="card">
       <div class="card-body text-white bg-primary" style="text-align: center;">
-        <h2>Standard Users: {{$standard_users}}</h2>
+        <h2><i class="fa fa-user" aria-hidden="true"></i> Standard Users: {{$standard_users}}</h2>
       </div>
     </div>
   </div>
-    <div class="col-md-3" style="margin: 0 auto;">
+    <div class="col-md-4" style="margin: 0 auto;">
     <div class="card">
       <div class="card-body text-white bg-danger" style="text-align: center;">
-        <h2>Admin Users: {{$admin_users}}</h2>
+        <h2><i class="fa fa-lock" aria-hidden="true"></i> Admin Users: {{$admin_users}}</h2>
       </div>
     </div>
   </div>
@@ -34,11 +34,11 @@
       <br>
          <button class="btn btn-outline-primary"
 data-toggle="modal" data-target="#AddUserModal"
-    >Add User</button>
+    ><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</button>
     <hr>
 <!--User charts-->
 <div class="container">
-  <div class="row" style="height: auto; max-height: 450px;">
+  <div class="row" style="height: auto; max-height: 200px;">
 {{ $user_chart->container() }}
 {{ $user_chart->script() }}
 </div>
@@ -83,13 +83,13 @@ data-toggle="modal" data-target="#AddUserModal"
           <td>
             <button class="btn btn-success"
             data-toggle="modal" data-target="#Modal{{$user->id}}"
-            >View</button>
+            ><i class="fa fa-eye" aria-hidden="true"></i> View</button>
             <button class="btn btn-primary"
             data-toggle="modal" data-target="#EditModal{{$user->id}}"
-            >Edit</button>
+            ><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
             <button class="btn btn-danger"
        data-toggle="modal" data-target="#DeleteModal{{$user->id}}"
-            >Delete</button>
+            ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
           </td>
       </tr>
             <!-- The Modal -->
@@ -122,7 +122,7 @@ data-toggle="modal" data-target="#AddUserModal"
    </strong>
       </div>
 <div class="modal-footer">
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
 </div>
     </div>
   </div>
@@ -162,8 +162,8 @@ data-toggle="modal" data-target="#AddUserModal"
         <hr>
         <button class="btn btn-primary" 
 type="submit" 
-        >Update User</button>
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        ><i class="fa fa-check" aria-hidden="true"></i> Update User</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
       </form>
       </div>
     </div>
@@ -189,10 +189,10 @@ type="submit"
         <div class="row">
           <div class="col-md-4" style="margin: 0 auto;">
             <input type="hidden" name="user_id" value="{{$user->id}}">
-            <button type="submit" class="btn btn-success btn-lg">YES</button>
+            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-check" aria-hidden="true"></i> YES</button>
           </div>
             <div class="col-md-4" style="margin: 0 auto;">
-          <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
           </div>
 
         </div>
@@ -244,8 +244,8 @@ type="submit"
         <hr>
         <button class="btn btn-primary" 
 type="submit" 
-        >Submit</button>
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        ><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
       </form>
       </div>
 

@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
     <!-- Charting library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.min.js"></script>
@@ -101,7 +102,7 @@
 <br>
 @if(Auth::user()->avatar)
 <img class="img-fluid rounded" src="{{
-asset('storage/app/public/images/'.Auth::user()->avatar)
+asset('storage/images/'.Auth::user()->avatar)
 }}" alt="avatar" />
 
 @else
@@ -109,16 +110,15 @@ asset('storage/app/public/images/'.Auth::user()->avatar)
 @endif
 </a>
 
-<a href="/home">Profile</a>
-<a href="/todos">Todos</a>
+<a href="/home"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+<a href="/todos"><i class="fa fa-list-ul" aria-hidden="true"></i> Todos</a>
 @if(Auth::user()->user_type == 'Admin')
-<a href="/admin">Admin</a>
+<a href="/admin"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a>
 @endif
 <a  href="{{ route('logout') }}" 
 onclick="event.preventDefault();
 document.getElementById('logout-form').submit();">
-
-{{ __('Logout') }}
+<i class="fa fa-sign-out" aria-hidden="true"></i> {{ __('Logout') }}
 </a>
 
 
