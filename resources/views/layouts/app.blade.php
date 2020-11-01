@@ -101,7 +101,7 @@
 <br>
 @if(Auth::user()->avatar)
 <img class="img-fluid rounded" src="{{
-asset('/public/images/'.Auth::user()->avatar)
+asset('storage/app/public/images/'.Auth::user()->avatar)
 }}" alt="avatar" />
 
 @else
