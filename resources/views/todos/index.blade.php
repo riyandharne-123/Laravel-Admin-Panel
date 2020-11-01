@@ -1,79 +1,6 @@
 @extends('layouts.app')
-    <style type="text/css">
-        /* The sidebar menu */
-.sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 180px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #fff;
-  display: block;
-}
-
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Style page content */
-.main {
-  margin-left: 160px; /* Same as the width of the sidebar */
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-    </style>
 @section('content')
-            <!-- Side navigation -->
-<div class="sidenav">
 
-    <a href="#" role="button" >         
-     {{ Auth::user()->name }}
-     <br>
-     @if(Auth::user()->avatar)
-                      <img class="img-fluid rounded" src="{{
-                                    asset('/storage/images/'.Auth::user()->avatar)
-                                }}" alt="avatar" />
-                    
-                    @else
-                   <p>No Image uploaded</p>
-                     @endif
-  </a>
-                       
-<a href="/home">Profile</a>
-<a href="/todos">Todos</a>
-    @if(Auth::user()->user_type == 'Admin')
-<a href="/admin">Admin</a>
-     @endif
-     <a  href="{{ route('logout') }}" 
-             onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-
-    {{ __('Logout') }}
- </a>
-
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-           @csrf
-         </form>
-
-</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -122,8 +49,8 @@ data-toggle="modal" data-target="#Modal{{$todo->id}}"
 data-toggle="modal" data-target="#EditModal{{$todo->id}}"
             >Edit</button>
             <button class="btn btn-danger"
-data-toggle="modal" data-target="#DeleteModal{{$todo->id}}"
-            >Delete</button>
+     onclick="$('#delete_form').submit();">
+            Delete</button>
           </td>
       </tr>
       <!-- The Modal -->
@@ -244,7 +171,7 @@ type="submit"
       <div class="modal-body">
            <h1>Do you Want to delete todo {{$todo->title}}?</h1>
         <br>
-      <form action="/todos/delete" method="POST">
+      <form action="/todos/delete" method="POST" id="delete_form">
         @csrf
         <div class="row">
           <div class="col-md-4" style="margin: 0 auto;">

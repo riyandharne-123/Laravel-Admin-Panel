@@ -22,20 +22,128 @@
 
     <!-- Charting library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.min.js"></script>
+
     <!-- Chartisan -->
+<style type="text/css">
+    /* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
 </head>
 <body>
+    @if(Auth::user())
+<div id="mySidebar" class="sidebar">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
+
+<a href="#" role="button" >         
+{{ Auth::user()->name }}
+<br>
+@if(Auth::user()->avatar)
+<img class="img-fluid rounded" src="{{
+asset('/storage/images/'.Auth::user()->avatar)
+}}" alt="avatar" />
+
+@else
+<p>No Image uploaded</p>
+@endif
+</a>
+
+<a href="/home">Profile</a>
+<a href="/todos">Todos</a>
+@if(Auth::user()->user_type == 'Admin')
+<a href="/admin">Admin</a>
+@endif
+<a  href="{{ route('logout') }}" 
+onclick="event.preventDefault();
+document.getElementById('logout-form').submit();">
+
+{{ __('Logout') }}
+</a>
+
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+@csrf
+</form>
+
+</div>
+@endif
     <div id="app" class="main">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+            @guest
+               {{''}}
+                @else
+                 <button class="btn" onclick="openNav()"><span style="font-size: 25px;">&#9776;</span></button>
+                @endguest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+              @guest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                  @endguest
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -103,5 +211,16 @@ src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></scrip
         },
       });
      });
+     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("app").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("app").style.marginLeft = "0";
+}
 </script>
 </html>
