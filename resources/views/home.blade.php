@@ -24,7 +24,7 @@
                   <div class="col-md-6">
               <form action="/uploadImg" method="POST" enctype="multipart/form-data">
                 @csrf
-  <label>Update Profile Image:</label>
+  <label>Update Profile Image: ( Sorry files cannot be stored on heroku server :(   )</label>
   <br>
   <input type="file" name="image" />
   <br>
