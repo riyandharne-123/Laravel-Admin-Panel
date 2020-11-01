@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Todo;
 use Illuminate\Database\Eloquent\sortDesc;
@@ -10,13 +11,20 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $data = Todo::all()->sortDesc();
+      $userId = Auth::user()->id;
+      $data = Todo::where('user_id',$userId)->get();
     	return view('todos.index')->with('todos',$data);
     }
 
       public function store(Request $request)
     {
-    	Todo::create($request->all());
+        $userId = Auth::user()->id;
+      //dd($request->all());
+    	 Todo::create([
+            'title' => $request['title'],
+            'user_id'=> $userId,
+            'description' => $request['description'],
+        ]);
          $request->session()->flash('message','Todo Created');
             return redirect()->back();
     }
@@ -43,6 +51,7 @@ class TodoController extends Controller
         }
      Todo::Where('id',$request->todo_id) ->update([
     'title' => $request->title,
+    'description' => $request->description,
     'completed' =>$status,
   ]);
         $request->session()->flash('message','Todo Updated');

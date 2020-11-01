@@ -111,7 +111,7 @@ data-toggle="modal" data-target="#AddUserModal"
     <hr>
 <!--User charts-->
 <div class="container">
-  <div class="row" style="height: 200px;">
+  <div class="row" style="height: auto; max-height: 450px;">
 {{ $user_chart->container() }}
 {{ $user_chart->script() }}
 </div>

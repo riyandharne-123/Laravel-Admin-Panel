@@ -139,8 +139,15 @@ data-toggle="modal" data-target="#DeleteModal{{$todo->id}}"
 
       <!-- Modal body -->
       <div class="modal-body">
-     <h4>{{$todo->title}}
+
+     <h4>
+          <label for="todo">Title:</label>
+      {{$todo->title}}
      <br>
+       <label for="todo">Description:</label>
+         {{$todo->description}}
+     <br>
+       <label for="todo">Status:</label>
        @if($todo->completed == "1")
         <strong class="text-success">
         Complete
@@ -177,6 +184,10 @@ data-toggle="modal" data-target="#DeleteModal{{$todo->id}}"
   <label for="todo">Todo:</label>
   <input type="hidden" name="todo_id" value="{{$todo->id}}">
   <input name="title" class="form-control" id="title" required value="{{$todo->title}}"/>
+</div>
+<div class="form-group">
+  <label for="todo">Description:</label>
+  <input name="description" class="form-control" value="{{$todo->description}}" required/>
 </div>
     <div class="form-group">
            @if($todo->completed == "1")
@@ -225,7 +236,7 @@ type="submit"
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete User</h4>
+        <h4 class="modal-title">Delete Todo</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -279,6 +290,10 @@ type="submit"
         <div class="form-group">
   <label for="todo">Todo:</label>
   <input name="title" class="form-control"  id="title" required/>
+</div>
+   <div class="form-group">
+      <label for="todo">Description:</label>
+  <input name="description" class="form-control" required/>
 </div>
         <hr>
         <button class="btn btn-primary" 
