@@ -17,16 +17,17 @@ class AdminController extends Controller
     	        if(auth()->user()->user_type == 'Admin')
         {
         	$data = User::all()->sortDesc();
-            $total_users =User::count();
+            $total_users =User::all()->count();
             $admin_users =User::where('user_type' , 'Admin')->count();
             $standard_users =User::where('user_type' , 'Standard')->count();
             //creating user charts
             $chart = new UserChart;
             $chart->labels(User::pluck('created_at')->values());
-            $chart->dataset('Total Users' ,'bar',User::pluck('created_at')->keys())->backgroundColor('#1E90FF');
+            $chart->dataset('Users' ,'bar',User::pluck('created_at')->keys())->backgroundColor('#1E90FF');
 
         return view('admin.index')->with([
-            'users' => $data,'total_users' => $total_users,
+            'users' => $data,
+            'total_users' => $total_users,
             'admin_users' => $admin_users,
             'standard_users' => $standard_users,
             'user_chart' =>$chart,
