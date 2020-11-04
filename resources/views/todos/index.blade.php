@@ -13,6 +13,14 @@
 data-toggle="modal" data-target="#AddTodoModal"
     ><i class="fa fa-plus-square" aria-hidden="true"></i> Add Todo</button>
     <hr>
+    <!--todo charts-->
+<div class="container">
+  <div class="row" style="height: auto; max-height: 200px;">
+{{ $todo_chart->container() }}
+{{ $todo_chart->script() }}
+</div>
+</div>
+    <hr>
     <div class="table-responsive">
     <table id="todo-table" class="table table-bordered table-hover">
     <thead>

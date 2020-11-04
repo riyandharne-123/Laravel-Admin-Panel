@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Todo;
 use Illuminate\Database\Eloquent\sortDesc;
+use App\Charts\TodoChart;
 
 class TodoController extends Controller
 {
@@ -13,7 +14,18 @@ class TodoController extends Controller
     {
       $userId = Auth::user()->id;
       $data = Todo::where('user_id',$userId)->get();
-    	return view('todos.index')->with('todos',$data);
+//todo charts
+$complete_todos =Todo::where(['completed' => '1', 'user_id' => $userId,])->count();
+$incomplete_todos =Todo::where(['completed' => '0', 'user_id' => $userId,])->count();
+    $chart = new TodoChart;
+    $chart->labels(['','']);
+    $chart->dataset('Complete Todos' ,'line',[$complete_todos])->backgroundColor('#7FFF00');
+    $chart->dataset('Incomplete Todos' ,'line',[$incomplete_todos])->backgroundColor('#B22222');
+
+      return view('todos.index')->with([
+        'todos' => $data,
+        'todo_chart' =>$chart,
+      ]);
     }
 
       public function store(Request $request)
